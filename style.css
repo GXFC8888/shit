@@ -1,0 +1,1108 @@
+@font-face {
+  font-family: Nebyla; src: url(/webFonts/Nebyla/NebylaRegular.ttf) format("truetype"); font-weight: 400; font-style: normal; font-display: block;
+}
+@font-face {
+  font-family: EvermoreItalic; src: url(/webFonts/Evermore/EvermoreItalic.ttf) format("truetype"); font-weight: 400; font-style: italic; font-display: block;
+}
+@font-face {
+  font-family: EvermoreRegular; src: url(/webFonts/Evermore/Evermore.ttf) format("truetype"); font-weight: 400; font-style: normal; font-display: block;
+}
+:root {
+  --yellow: #fcb609; --ink: #111111; --white: #fffdf4; --green: #43a832; --red: #b00020;
+}
+html.fonts-loading {
+  background: #fcb609;
+}
+html.fonts-loading body {
+  visibility: hidden;
+}
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+body, html {
+  width: 100%; max-width: 100%; margin: 0; padding: 0; overflow-x: hidden; scroll-behavior: smooth;
+}
+body {
+  min-height: 100vh; color: var(--white); background: var(--yellow); font-family: Nebyla, Arial, sans-serif;
+}
+body:after, body:before {
+  content: none;
+}
+a, button, input, select, textarea {
+  font-family: inherit;
+}
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed; opacity: .58;
+}
+.hidden {
+  display: none;
+}
+.page-shell {
+  width: min(100%, 920px); max-width: 100%; margin: 0 auto; padding: 24px 42px 0; overflow-x: hidden;
+}
+.hero-top {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 120px; max-width: 100%;
+}
+.brand-mark {
+  display: inline-flex; align-items: center; gap: 18px; min-width: 0; color: var(--white); text-decoration: none;
+}
+.brand-mark img {
+  width: 112px; height: 112px; flex: 0 0 auto; object-fit: contain;
+}
+.brand-word-text {
+  display: inline-block; flex: 0 0 auto; color: var(--white); font-size: clamp(72px, 8.4vw, 118px); font-weight: 900; line-height: .78; letter-spacing: 0; -webkit-text-stroke: 1.8px var(--ink); paint-order: stroke fill; text-shadow: 0 5px 0 rgba(0, 0, 0, .28), 6px 8px 9px rgba(0, 0, 0, .2); transform: translateY(10px); white-space: nowrap;
+}
+.top-wallet-link {
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; min-width: 118px; max-width: 138px; min-height: 38px; padding: 8px 14px 5px; border: 2px solid rgba(255, 255, 255, .92); border-radius: 999px; background: rgba(255, 255, 255, .06); color: var(--white); font-family: EvermoreItalic, Nebyla, Arial, sans-serif; font-style: italic; font-size: clamp(9px, 1.35vw, 12px); font-weight: 400; line-height: 1; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18), 0 6px 12px rgba(0, 0, 0, .10); transition: transform .12s ease, background .12s ease, opacity .12s ease;
+}
+.top-wallet-link:hover {
+  transform: translateY(-1px); background: rgba(255, 255, 255, .16);
+}
+.top-wallet-link:active {
+  transform: translateY(2px);
+}
+.hero-card {
+  position: relative; display: grid; place-items: center; min-height: 490px; max-width: 100%; padding: 40px 10px 22px; text-align: center; overflow: hidden; border-top: 1px solid rgba(0, 0, 0, .08); box-shadow: inset 0 14px 14px -22px rgba(0, 0, 0, .55);
+}
+.hero-tagline, .tagline {
+  position: relative; z-index: 1; display: block; max-width: 930px; margin: 38px auto 24px; padding-left: 8px; padding-right: 8px; line-height: 1.18; overflow-wrap: break-word;
+}
+.hero-oh, .hero-tagline, .tagline {
+  width: 100%; color: var(--white); font-weight: 400; letter-spacing: .02em; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.hero-oh {
+  display: flex; align-items: baseline; justify-content: center; gap: 18px; margin-bottom: 22px; line-height: 1; text-align: center;
+}
+.hero-oh-small {
+  font-size: clamp(34px, 4.6vw, 54px); font-weight: 400; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.hero-oh-small, .hero-shit-big {
+  display: inline-block; color: var(--white); line-height: 1;
+}
+.hero-shit-big {
+  font-size: clamp(78px, 9.2vw, 126px); font-weight: 900; text-shadow: 0 4px 5px rgba(0, 0, 0, .34);
+}
+#walletText, #xStatusText, .aligned-card-copy p, .hero-copy, .message, .overview-copy p, .referral-intro, .referral-levels p, .reward, .small-message, .status-pill span, .status-pill strong, .x-task-intro p {
+  color: var(--white); font-size: clamp(44px, 5.4vw, 66px); font-weight: 400; line-height: 1.28; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.hero-copy {
+  display: block; max-width: 100%; margin-top: 0; overflow-wrap: break-word;
+}
+.icon-only-actions.three-social-icons, .social-actions.three-social-icons, .three-social-icons {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; width: min(100%, 460px); max-width: 460px; min-height: 120px; margin: 20px auto 38px; gap: 0; flex-wrap: nowrap;
+}
+.social-pill {
+  display: flex; align-items: center; justify-content: center; width: 96px; height: 96px; min-height: 96px; padding: 0; color: var(--ink); text-decoration: none; background: transparent; border: 0; border-radius: 50%; box-shadow: none; transition: transform .16s ease, opacity .16s ease;
+}
+.three-social-icons .social-pill:first-child {
+  transform: translateY(18px);
+}
+.three-social-icons .social-pill:nth-child(2) {
+  transform: translateY(0);
+}
+.three-social-icons .social-pill:nth-child(3) {
+  transform: translateY(-18px);
+}
+.three-social-icons .social-pill:first-child:hover {
+  transform: translateY(12px) scale(1.04);
+}
+.three-social-icons .social-pill:nth-child(2):hover {
+  transform: translateY(-6px) scale(1.04);
+}
+.three-social-icons .social-pill:nth-child(3):hover {
+  transform: translateY(-24px) scale(1.04);
+}
+.social-pill:active {
+  transform: translateY(2px);
+}
+.music-record-button:active {
+  transform: translateY(2px) scale(.96);
+}
+.social-icon {
+  display: grid; place-items: center; width: 96px; height: 96px; min-height: 96px; border-radius: 50%; color: #fff; font-size: 44px; font-weight: 800; overflow: hidden; box-shadow: 0 12px 16px rgba(0, 0, 0, .18);
+}
+.image-icon {
+  background: transparent;
+}
+.image-icon img {
+  display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
+}
+.music-record-button {
+  appearance: none; -webkit-appearance: none; background: transparent; border: 0; padding: 0;
+}
+.record-image-icon {
+  background: transparent; border-radius: 50%; overflow: visible;
+}
+#musicRecordIcon, .record-image-icon img {
+  display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%; transform-origin: 50% 50%; animation: none; will-change: transform;
+}
+.music-record-button.is-playing #musicRecordIcon {
+  animation: recordSpin 2.4s linear infinite;
+}
+@keyframes recordSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.x-task-twitter-link {
+  appearance: none; -webkit-appearance: none; display: grid; place-items: center; padding: 0; text-decoration: none; cursor: pointer; outline: none; font: inherit;
+}
+.x-task-twitter-link:hover {
+  transform: scale(1.04);
+}
+.x-task-twitter-link:active {
+  transform: scale(.96);
+}
+.exchange-list {
+  position: relative; z-index: 2; display: grid; width: min(100% - 60px, 460px); max-width: 460px; margin: 12px auto 72px; gap: 42px;
+}
+.exchange-list>.exchange-item:first-child {
+  transform: translateY(22px); margin-bottom: 34px;
+}
+.ca-exchange-block {
+  --ca-inline-start: 34px; --ca-border-width: 3px; display: grid; width: 100%; margin-bottom: 34px; gap: 12px; transform: translateY(22px);
+}
+.ca-label {
+  width: 100%; margin: 0; padding: 0; color: var(--white); font-family: Nebyla, Arial, sans-serif; font-size: 100px; font-style: italic; font-weight: 400; line-height: 1; text-align: center; text-shadow: 0 3px 4px rgba(0, 0, 0, .22);
+}
+.exchange-item.ca-address-box {
+  justify-content: space-between; padding: 8px 8px 8px var(--ca-inline-start); border: 2px solid rgba(255, 255, 255, .74); background: rgba(255, 255, 255, .94); box-shadow: 0 10px 16px rgba(0, 0, 0, .22), inset 0 -3px 0 rgba(0, 0, 0, .08); overflow: hidden; cursor: default; transition: none;
+}
+.ca-address-text {
+  position: relative; top: 2px; display: block; flex: 1 1 auto; min-width: 0; color: #111111; font-family: EvermoreItalic, Nebyla, Arial, sans-serif; height: 40px; font-size: 22px; font-style: italic; font-weight: 400; line-height: 40px; letter-spacing: 0; text-align: left; white-space: nowrap; overflow: hidden; margin-right: 8px;
+}
+.ca-address-box .ca-copy-button {
+  color: #111111; top: 0; flex: 0 0 50px; width: 50px; height: 52px; min-width: 50px; min-height: 52px; margin-left: 0;
+}
+.ca-address-box .ca-copy-button svg {
+  width: 29px; height: 29px;
+}
+.exchange-item.ca-address-box:hover, .exchange-item.ca-address-box:active {
+  transform: none; background: rgba(255, 255, 255, .94); box-shadow: 0 10px 16px rgba(0, 0, 0, .22), inset 0 -3px 0 rgba(0, 0, 0, .08);
+}
+.exchange-item {
+  position: relative; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 86px; padding: 8px 92px 8px 34px; border: 3px solid rgba(255, 255, 255, .96); border-radius: 999px; color: var(--white); background: transparent; text-decoration: none; overflow: visible; box-shadow: 0 10px 16px rgba(0, 0, 0, .12); transition: transform .14s ease, background .14s ease, box-shadow .14s ease;
+}
+.exchange-item:hover {
+  transform: translateY(-2px); background: rgba(255, 255, 255, .06);
+}
+.exchange-list>.exchange-item:first-child:hover {
+  transform: translateY(20px);
+}
+.exchange-item:active {
+  transform: translateY(2px) scale(.99);
+}
+.exchange-list>.exchange-item:first-child:active {
+  transform: translateY(22px) scale(.99);
+}
+.exchange-list .exchange-item .exchange-name, .exchange-name {
+  display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; max-width: 100%; padding-top: 0; padding-bottom: 0; color: var(--white); font-family: EvermoreItalic, Nebyla, Arial, sans-serif; font-size: clamp(42px, 5.2vw, 64px); font-weight: 400; font-style: italic; line-height: 1; letter-spacing: .01em; text-align: center; text-transform: lowercase; white-space: nowrap; overflow: visible; text-overflow: clip; text-shadow: 0 4px 0 rgba(0, 0, 0, .18); transform: translateY(2px);
+}
+.exchange-list .exchange-item:nth-of-type(6) .exchange-name {
+  font-size: clamp(32px, 4.2vw, 50px);
+}
+.exchange-logo {
+  position: absolute; right: 16px; top: 50%; display: grid; place-items: center; width: 70px; height: 70px; transform: translateY(-50%); border-radius: 50%; overflow: visible;
+}
+.exchange-logo img {
+  display: block; object-fit: contain; border-radius: 50%;
+}
+.exchange-logo img, .exchange-middle-logo {
+  width: 62px; height: 62px;
+}
+.exchange-middle-logo {
+  display: block; margin: -14px auto; object-fit: cover; border-radius: 0; box-shadow: 0 10px 16px rgba(0, 0, 0, .18);
+}
+.hero-main-image {
+  position: relative; z-index: 1; display: block; width: min(76.8vw, 558px); max-width: 76.8vw; height: auto; margin: 0 auto 34px; object-fit: contain; background: transparent; box-shadow: none; border: none; outline: none; transform: none;
+}
+.pepe-divider {
+  width: 100vw; max-width: 100vw; height: 20px; margin: 28px calc(50% - 50vw); background-image: url(/images/divider.svg); background-repeat: repeat-x; background-size: 481px 100%; background-position: top; transform: scaleY(-1); pointer-events: none;
+}
+.hero-card+.pepe-divider {
+  margin-top: 28px; margin-bottom: 34px;
+}
+.airdrop-stack {
+  display: grid; gap: 0; margin-top: 10px;
+}
+.glass-card, .overview-card, .overview-card-two, .referral-card, .task-card, .tokenomics-card {
+  position: relative; margin: 0; padding: 24px 32px 64px; color: var(--white); background: var(--yellow); border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; overflow: hidden;
+}
+.task-card {
+  overflow: visible;
+}
+.card-title-row, .center-card-title-row, .overview-title-row, .task-title-row, .tokenomics-title-row {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: 100%; gap: 0; margin: 0 0 36px; text-align: center;
+}
+.aligned-section-content, .card-title-row>div, .center-card-title-row>div, .overview-title-row>div, .task-title-row>div, .tokenomics-title-row>div {
+  width: 100%; text-align: center;
+}
+h2, h3 {
+  font-weight: 900;
+}
+.overview-card .aligned-section-content h2, .overview-card h2, .referral-card h2, .task-card h2, .tokenomics-card .aligned-section-content h2, .tokenomics-card h2 {
+  width: 100%; margin: 0 0 42px; color: var(--white); font-size: clamp(78px, 9.2vw, 126px); font-weight: 900; line-height: 1.02; text-align: center; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+#about .overview-title-row, #community-overview .overview-title-row, #project-overview-2 .overview-title-row, #project-overview .overview-title-row, .overview-card-two .overview-title-row, .overview-card .overview-title-row {
+  margin-bottom: 14px;
+}
+#about h2, #community-overview h2, #project-overview-2 h2, #project-overview h2, .overview-card-two .aligned-section-content h2, .overview-card-two h2, .overview-card .aligned-section-content h2, .overview-card h2 {
+  margin-bottom: 36px;
+}
+.referral-card h2 {
+  margin-bottom: 64px;
+}
+.referral-card .center-card-title-row {
+  margin-bottom: 46px;
+}
+.referral-intro {
+  max-width: 860px; margin: 0 auto 42px; padding: 0; text-align: center;
+}
+.referral-levels {
+  display: grid; justify-items: center; width: 100%; max-width: 100%; margin: 0 auto; gap: 0; text-align: center;
+}
+.referral-levels p {
+  margin: 0 auto 10px; text-align: center; line-height: 1.05;
+}
+.ref-link-box {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; width: min(100% - 60px, 460px); max-width: 460px; min-height: 70px; height: 70px; margin: 38px auto 30px; padding: 10px 18px; background: #fffdf4; border: 3px dashed rgba(17, 17, 17, .42); border-radius: 28px; box-shadow: none;
+}
+#refLink, .ref-link-box #refLink, .ref-link-box input, .ref-link-box input#refLink, .ref-link-box textarea {
+  position: relative; z-index: 1; display: block; width: 100%; height: auto; padding: 0; border: 0; outline: 0; resize: none; background: transparent; color: #111111; font-family: EvermoreItalic, Nebyla, Arial, sans-serif; font-style: italic; font-size: 18px; font-weight: 400; line-height: 1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transform: none;
+}
+.hidden-copy-button, .icon-copy {
+  display: none;
+}
+.two-actions {
+  position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; width: min(100% - 36px, 620px); margin: 34px auto 0;
+}
+#claimReferralBtn, #copyRefBtnMobile, .btn, .mission-actions .btn, .open-task-btn, .two-actions .btn, .verify-task-btn {
+  display: flex; align-items: center; justify-content: center; width: 100%; min-height: 70px; padding: 0 14px; border: 2px solid rgba(255, 255, 255, .74); border-radius: 999px; color: var(--ink); font-family: EvermoreItalic, Nebyla, Arial, sans-serif; font-style: italic; font-size: clamp(20px, 4.8vw, 28px); font-weight: 400; line-height: 1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: clip; text-decoration: none; text-transform: none; transform: none; box-shadow: 0 10px 16px rgba(0, 0, 0, .22), inset 0 -3px 0 rgba(0, 0, 0, .08); transition: transform .12s ease, opacity .12s ease;
+}
+#claimReferralBtn {
+  color: #111111; background: rgba(255, 255, 255, .94);
+}
+.btn.dark {
+  color: #fff; background: #111;
+}
+.btn.gold, .btn.light {
+  color: #111; background: rgba(255, 255, 255, .94);
+}
+.message, .small-message {
+  min-height: 22px; margin: 14px 0 0; text-align: center; overflow-wrap: anywhere;
+}
+#refMessage.ok, .message.ok, .referral-card .message, .referral-card .small-message, .small-message.ok {
+  color: var(--green); text-shadow: 0 3px 4px rgba(0, 0, 0, .25);
+}
+#refMessage.err, .message.err, .small-message.err {
+  display: block; color: var(--red); text-shadow: 0 3px 4px rgba(0, 0, 0, .25);
+}
+.x-task-layout {
+  position: relative; z-index: 1; display: block; width: min(100% - 40px, 620px); max-width: 620px; margin: -10px auto 16px; overflow: visible;
+}
+.x-task-three-parts {
+  gap: 64px; overflow: visible;
+}
+.x-task-part, .x-task-three-parts {
+  display: grid; width: 100%;
+}
+.x-task-part {
+  grid-template-columns: 96px minmax(0, 1fr); align-items: start; gap: 28px;
+}
+.x-task-intro-part {
+  align-items: center;
+}
+.x-task-account-part {
+  align-items: start;
+}
+.x-task-account-part .x-task-left-icon {
+  transform: translateY(22px);
+}
+.x-task-account-part .x-task-right-text {
+  transform: translateY(-14px);
+}
+.x-task-mission-part {
+  margin-top: -42px;
+}
+.x-task-mission-part .x-task-left-icon {
+  transform: translateY(26px);
+}
+.x-task-left-icon {
+  display: flex; align-items: flex-start; justify-content: center; width: 96px; min-width: 96px;
+}
+.x-task-right-text {
+  display: block; width: 100%; min-width: 0; text-align: left; overflow: visible;
+}
+.round-x {
+  display: grid; place-items: center; width: 116px; height: 116px; flex: 0 0 auto; border-radius: 50%; border: 3px solid #fff; color: #fff; background: #111; overflow: hidden; box-shadow: 0 10px 15px rgba(0, 0, 0, .16);
+}
+.small-round-x, .x-task-left-icon .round-x, .x-task-left-icon .small-round-x {
+  width: 96px; height: 96px; min-width: 96px; min-height: 96px; border-width: 3px; margin: 0; transform: none; box-shadow: 0 8px 12px rgba(0, 0, 0, .16);
+}
+.round-x img, .x-task-left-icon .round-x img, .x-task-left-icon .small-round-x img {
+  display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
+}
+.toaster-character-small, .x-task-guide-icon {
+  display: block; width: 96px; height: 96px; max-width: 96px; max-height: 96px; object-fit: contain; margin: 0; transform: none;
+}
+.x-task-intro {
+  position: relative; z-index: 1; display: block; width: 100%;
+}
+.x-task-intro, .x-task-intro p {
+  margin: 0; padding: 0; text-align: left;
+}
+.x-task-intro p {
+  text-decoration: none;
+}
+.x-right-content {
+  align-items: start; min-width: 0; overflow: visible;
+}
+.wallet-status-grid, .x-right-content {
+  display: grid; justify-items: start; width: 100%; margin: 0; padding: 0; text-align: left;
+}
+.status-pill:first-child {
+  display: none;
+}
+.status-pill {
+  display: block; width: 100%; margin: 0; padding: 0; background: transparent; border: 0; text-align: left;
+}
+#walletText, #xStatusText, .status-pill span, .status-pill strong {
+  display: block; margin: 0; padding: 0; color: var(--white); font-size: clamp(44px, 5.4vw, 66px); font-weight: 400; line-height: 1.18; text-align: left; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+#walletText, #xStatusText, .status-pill strong {
+  width: 100%; white-space: nowrap; overflow-wrap: normal;
+}
+.x-task-reward-line, .x-task-reward-line .reward {
+  width: 100%; margin: 0; padding: 0; text-align: left;
+}
+.x-task-reward-line .reward {
+  display: block; color: var(--white); font-size: clamp(44px, 5.4vw, 66px); font-weight: 400; line-height: 1.18; white-space: nowrap; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.mission-list {
+  margin-top: 0;
+}
+.mission-card.empty h3, .mission-card.empty p {
+  margin: 0; color: var(--white); font-size: clamp(34px, 4.6vw, 52px); font-weight: 400; line-height: 1.18; text-align: left; text-shadow: 0 3px 4px rgba(0, 0, 0, .22);
+}
+.mission-card.empty, .mission-head, .mission-head h3, .mission-link, .mission-link[href], .mission-link[href]:after, .mission-link[href]:before, .mission-summary, .x-task-mission-area .mission-head, .x-task-mission-area .mission-head h3, .x-task-mission-area .mission-link, .x-task-mission-area .mission-summary {
+  display: none;
+}
+.mission-card, .x-task-mission-area .mission-card, .x-task-mission-area .mission-list {
+  background: transparent; border: 0; border-radius: 0; box-shadow: none;
+}
+.mission-card, .x-task-mission-area, .x-task-mission-area .mission-card, .x-task-mission-area .mission-list {
+  display: block; width: 100%; margin: 0; padding: 0; text-align: left;
+}
+.x-task-mission-area {
+  max-width: 100%; overflow: visible; transform: translateY(16px);
+}
+#missionList .mission-card .x-task-message, #missionList .x-task-message, .mission-card .x-task-message, .x-task-message, .x-task-mission-area #missionList .mission-card .x-task-message, .x-task-mission-area #missionList .x-task-message, .x-task-mission-area .mission-card .x-task-message, .x-task-mission-area .x-task-message {
+  position: static; display: block; width: 100%; max-width: 100%; height: auto; min-height: 0; margin: 0 0 28px; padding: 0; border: 0; border-radius: 0; color: var(--white); background: transparent; font-family: Nebyla, Arial, sans-serif; font-size: clamp(34px, 4.6vw, 52px); font-weight: 400; line-height: 1.18; text-align: left; text-shadow: 0 3px 4px rgba(0, 0, 0, .22); white-space: normal; overflow-wrap: normal; opacity: 1; visibility: visible; box-shadow: none; box-sizing: border-box;
+}
+.x-task-mission-area .mission-actions {
+  display: none;
+}
+.x-task-button-area {
+  width: 100%; max-width: 100%; margin: 64px auto 0; padding: 0; display: flex; justify-content: center; align-items: center;
+}
+.x-task-button-area .mission-actions {
+  width: min(100% - 60px, 460px); max-width: 460px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: 1fr; gap: 18px; justify-items: stretch;
+}
+.x-task-button-area .mission-actions .btn, .x-task-button-area .mission-actions button, .x-task-button-area .open-task-btn, .x-task-button-area .verify-task-btn {
+  width: 100%; max-width: 460px; min-height: 70px; margin: 0 auto; padding: 0 18px; display: flex; align-items: center; justify-content: center; color: var(--ink); font-family: EvermoreItalic, Nebyla, Arial, sans-serif; font-style: italic; font-size: clamp(20px, 4.8vw, 28px); font-weight: 400; line-height: 1; text-align: center; white-space: nowrap; text-transform: none; overflow: hidden; box-sizing: border-box;
+}
+.open-task-btn, .verify-task-btn {
+  text-transform: none;
+}
+.aligned-card-copy, .overview-copy, .tokenomics-center-copy {
+  position: relative; z-index: 1; display: grid; width: 100%; max-width: 100%; margin: 0 auto; padding: 0; gap: 12px;
+}
+#about .overview-copy, #community-overview .overview-copy, #project-overview-2 .overview-copy, #project-overview .overview-copy, .overview-card-two .overview-copy, .overview-card .overview-copy {
+  margin-top: 0; margin-bottom: 0;
+}
+#project-overview-2 .overview-copy {
+  margin-top: -16px; margin-bottom: 16px;
+}
+.tokenomics-center-copy {
+  justify-items: center; text-align: center; gap: 0; overflow: hidden;
+}
+.aligned-card-copy p, .overview-copy p, .tokenomics-center-copy p {
+  width: 100%; max-width: 100%; margin: 0; text-align: center;
+}
+.tokenomics-card {
+  overflow: hidden; padding: 8px 12px 80px;
+}
+.tokenomics-title-row {
+  margin-bottom: 20px;
+}
+.tokenomics-card>.tokenomics-center-copy>p:first-child, .tokenomics-card>.tokenomics-center-copy>p:nth-child(3), .tokenomics-center-copy>p:first-child, .tokenomics-center-copy>p:nth-child(3) {
+  width: 100%; max-width: 100%; padding: 0 12px; color: var(--white); font-family: EvermoreRegular, Nebyla, Arial, sans-serif; font-weight: 400; font-size: clamp(20px, 4.8vw, 28px); line-height: 1.18; margin: 12px auto 18px; text-align: center; text-transform: lowercase; white-space: normal; overflow-wrap: normal; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.token-number, .token-number span, .tokenomics-card .token-number, .tokenomics-card .token-number span, .tokenomics-card>.tokenomics-center-copy .token-number {
+  width: 100%; max-width: 100%; color: var(--white); font-family: EvermoreRegular, Nebyla, Arial, sans-serif; font-weight: 400; font-size: clamp(24px, 5.8vw, 34px); line-height: 1.7; text-align: center; white-space: normal; overflow-wrap: normal; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.token-number, .tokenomics-card>.tokenomics-center-copy .token-number {
+  display: block; margin: 0 auto 70px;
+}
+.token-number span, .tokenomics-card .token-number span {
+  display: block; width: 100%; max-width: 100%; margin: 0; line-height: 1.65;
+}
+.tokenomics-center-copy>p:nth-child(5), .tokenomics-center-copy>p:nth-child(6) {
+  width: min(100% - 40px, 620px); max-width: 620px; margin-left: auto; margin-right: auto; color: var(--white); font-size: clamp(44px, 5.4vw, 66px); line-height: 1.28; text-align: center; white-space: normal; overflow-wrap: normal; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.tokenomics-center-copy>p:nth-child(5) {
+  margin-top: 18px; margin-bottom: 58px;
+}
+.tokenomics-center-copy>p:nth-child(6) {
+  margin-top: 0;
+}
+.overview-card, .overview-card-two {
+  padding-bottom: 92px;
+}
+.section-bottom-image {
+  position: relative; z-index: 1; display: block; width: min(100%, 558px); height: auto; margin: 42px auto 0; object-fit: contain;
+}
+.dev-wallet-bottom-image {
+  margin-top: 62px;
+}
+.overview-bottom-image {
+  position: relative; z-index: 1; display: block; width: min(76.8vw, 558px); max-width: 76.8vw; height: auto; margin: 58px auto 34px; object-fit: contain; object-position: center center; background: transparent; box-shadow: none; border: none; outline: none;
+}
+.about-bottom-image {
+  margin: 58px auto 34px;
+}
+.community-social-actions {
+  position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; width: min(100%, 460px); max-width: 460px; min-height: 140px; margin: 70px auto 20px; padding: 0; gap: 0; flex-wrap: nowrap;
+}
+.community-social-pill {
+  appearance: none; -webkit-appearance: none; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0; border: 0; border-radius: 50%; color: var(--ink); text-decoration: none; box-shadow: none; outline: none; transition: transform .16s ease, opacity .16s ease; -webkit-tap-highlight-color: transparent;
+}
+.community-social-icon, .community-social-pill {
+  width: 96px; height: 96px; min-width: 96px; min-height: 96px; background: transparent;
+}
+.community-social-icon {
+  display: grid; place-items: center; border-radius: 50%; overflow: hidden; box-shadow: 0 12px 16px rgba(0, 0, 0, .18);
+}
+.community-social-icon img {
+  display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
+}
+.community-x-icon {
+  background: #111;
+}
+.community-x-icon img {
+  object-fit: contain; background: #111;
+}
+.community-social-pill:first-child {
+  transform: translateY(18px);
+}
+.community-social-pill:nth-child(2) {
+  transform: translateY(0);
+}
+.community-social-pill:nth-child(3) {
+  transform: translateY(-18px);
+}
+.community-social-pill:first-child:hover {
+  transform: translateY(12px) scale(1.04);
+}
+.community-social-pill:nth-child(2):hover {
+  transform: translateY(-6px) scale(1.04);
+}
+.community-social-pill:nth-child(3):hover {
+  transform: translateY(-24px) scale(1.04);
+}
+.community-social-pill:first-child:active {
+  transform: translateY(20px) scale(.96);
+}
+.community-social-pill:nth-child(2):active {
+  transform: translateY(2px) scale(.96);
+}
+.community-social-pill:nth-child(3):active {
+  transform: translateY(-16px) scale(.96);
+}
+.contract-address-wrap {
+  position: relative; z-index: 3; display: block; width: 100%; max-width: 100%; margin: 54px auto 0; padding: 0;
+}
+.contract-address-box {
+  position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; width: min(100% - 60px, 460px); max-width: 460px; min-height: 70px; height: 70px; margin: 0 auto; padding: 8px 8px 8px 34px; border: 2px solid rgba(17, 17, 17, .12); border-radius: 999px; background: var(--white); box-shadow: 0 8px 14px rgba(0, 0, 0, .16); overflow: hidden;
+}
+#contractAddress, .contract-address-input {
+  position: relative; top: 2px; display: block; flex: 1 1 auto; width: 100%; min-width: 0; height: 52px; margin: 0; padding: 0; border: 0; border-radius: 0; outline: 0; background: transparent; box-shadow: none; color: #111111; font-family: EvermoreItalic, Nebyla, Arial, sans-serif; font-size: 22px; font-weight: 400; font-style: italic; line-height: 52px; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: clip; appearance: none; cursor: text;
+}
+#contractAddress:focus, #copyContractBtn, .contract-address-input:focus, .contract-copy-button {
+  border: 0; outline: 0; background: transparent; box-shadow: none;
+}
+#copyContractBtn, .contract-copy-button {
+  position: relative; z-index: 5; appearance: none; -webkit-appearance: none; display: grid; place-items: center; flex: 0 0 50px; width: 50px; height: 52px; min-width: 50px; min-height: 52px; margin: 0; padding: 0; border-radius: 0; color: #111111; overflow: visible; opacity: 1; cursor: pointer; pointer-events: auto; touch-action: manipulation; transition: transform .12s ease, color .15s ease, opacity .15s ease; -webkit-tap-highlight-color: transparent;
+}
+#copyContractBtn:hover, .contract-copy-button:hover {
+  background: transparent; transform: scale(1.04);
+}
+#copyContractBtn:active, .contract-copy-button:active {
+  background: transparent; transform: scale(.90);
+}
+#copyContractBtn.is-copied, #copyContractBtn:disabled, .contract-copy-button.is-copied, .contract-copy-button:disabled {
+  color: #9b9b9b; background: transparent; opacity: 1; cursor: default;
+}
+#copyContractBtn svg, .contract-copy-button svg, .contract-copy-icon {
+  display: block; width: 29px; height: 29px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none;
+}
+#project-overview-2 .community-social-actions {
+  margin-top: 54px;
+}
+.footer-note {
+  position: relative; display: flex; align-items: center; justify-content: center; min-height: 76px; margin: 0; padding: 20px 16px 10px; background: var(--yellow); color: var(--white); font-size: clamp(24px, 3.2vw, 42px); font-weight: 400; line-height: 1.1; text-align: center; white-space: nowrap; text-shadow: 0 3px 4px rgba(0, 0, 0, .32);
+}
+.footer-note:before {
+  content: ""; position: absolute; top: 0; left: 50%; width: 100vw; height: 20px; transform: translateX(-50%) scaleY(-1); background-image: url(/images/divider.svg); background-repeat: repeat-x; background-size: 481px 100%; background-position: top; pointer-events: none;
+}
+.custom-alert {
+  position: fixed; inset: 0; z-index: 99999; display: grid; place-items: center; padding: 24px; background: rgba(0, 0, 0, .55);
+}
+.custom-alert.hidden {
+  display: none;
+}
+.custom-alert-box {
+  width: min(92vw, 520px); padding: 30px 32px 28px; border-radius: 24px; background: #111; color: #fff; box-shadow: 0 20px 50px rgba(0, 0, 0, .4); text-align: left;
+}
+.custom-alert-box h3 {
+  margin: 0 0 16px; color: #fff; font-size: 34px; font-weight: 900; line-height: 1.1;
+}
+.custom-alert-box p {
+  margin: 0 0 26px; color: #fff; font-size: 24px; font-weight: 400; line-height: 1.3;
+}
+.custom-alert-box button {
+  display: flex; align-items: center; justify-content: center; min-width: 110px; min-height: 52px; margin-left: auto; padding: 12px 24px 8px; border: 0; border-radius: 999px; background: var(--yellow); color: var(--ink); font-size: 22px; font-weight: 400; line-height: 1; box-shadow: 0 8px 14px rgba(0, 0, 0, .25);
+}
+@media (min-width:768px) {
+  .top-wallet-link {
+    min-width: 210px; max-width: 260px; min-height: 48px; padding: 9px 24px 6px; font-size: clamp(13px, 1.2vw, 16px);
+  }
+  .two-actions {
+    grid-template-columns: 1fr; width: min(100% - 60px, 460px); max-width: 460px; margin: 34px auto 0; gap: 18px;
+  }
+  #claimReferralBtn, #copyRefBtnMobile, .two-actions .btn, .x-task-button-area .mission-actions .btn, .x-task-button-area .mission-actions button, .x-task-button-area .open-task-btn, .x-task-button-area .verify-task-btn {
+    width: 100%; max-width: 460px; min-height: 66px; margin: 0 auto; padding: 0 18px; font-size: clamp(22px, 2.4vw, 28px);
+  }
+  .x-task-button-area {
+    margin: 64px auto 0;
+  }
+  .x-task-button-area .mission-actions {
+    width: min(100% - 60px, 460px); max-width: 460px; gap: 18px;
+  }
+  .exchange-list .exchange-item .exchange-name, .exchange-name {
+    font-size: clamp(26px, 3.2vw, 38px);
+  }
+  .exchange-list .exchange-item:nth-of-type(6) .exchange-name {
+    font-size: clamp(22px, 2.8vw, 34px);
+  }
+  .x-task-account-part .x-task-left-icon {
+    transform: translateY(52px);
+  }
+  .x-task-mission-part .x-task-left-icon {
+    transform: translateY(72px);
+  }
+}
+@media (max-width:767px) {
+  .ca-label {
+    font-size: 50px;
+  }
+  .page-shell {
+    width: 100%; max-width: 100%; padding-left: 14px; padding-right: 14px;
+  }
+  .hero-top {
+    min-height: 82px; gap: 8px;
+  }
+  .brand-mark {
+    max-width: calc(100% - 118px); gap: 6px; overflow: visible;
+  }
+  .brand-mark img {
+    width: 66px; height: 66px; flex: 0 0 66px;
+  }
+  .brand-word-text {
+    font-size: 54px; line-height: .85; -webkit-text-stroke: 1.3px var(--ink); transform: translateY(-2px);
+  }
+  .top-wallet-link {
+    min-width: 108px; max-width: 126px; min-height: 36px; padding: 7px 13px 4px; font-size: 8.5px;
+  }
+  .hero-card {
+    min-height: auto; padding: 22px 0 28px;
+  }
+  .hero-tagline {
+    margin-top: 30px; margin-bottom: 22px; padding-left: 10px; padding-right: 10px;
+  }
+  .hero-oh {
+    gap: 10px; margin-bottom: 20px;
+  }
+  .hero-oh-small {
+    font-size: clamp(27px, 6.7vw, 36px);
+  }
+  .hero-shit-big {
+    font-size: clamp(66px, 15.5vw, 96px);
+  }
+  #walletText, #xStatusText, .aligned-card-copy p, .hero-copy, .message, .overview-copy p, .referral-intro, .referral-levels p, .reward, .small-message, .status-pill span, .status-pill strong, .x-task-intro p {
+    font-size: clamp(36px, 8.9vw, 50px); line-height: 1.26;
+  }
+  .icon-only-actions.three-social-icons, .social-actions.three-social-icons, .three-social-icons {
+    width: min(100%, 220px); max-width: 220px; min-height: 86px; margin-top: 16px; margin-bottom: 28px;
+  }
+  .social-icon, .social-pill, .three-social-icons .social-icon, .three-social-icons .social-pill {
+    width: 62px; height: 62px; min-height: 62px;
+  }
+  .exchange-list {
+    width: min(100% - 108px, 326px); max-width: 326px; margin: 12px auto 66px; gap: 24px;
+  }
+  .ca-exchange-block {
+    --ca-inline-start: 14px; --ca-border-width: 2px; gap: 10px;
+  }
+  .ca-address-text {
+    font-size: 16px;
+  }
+  .exchange-item.ca-address-box {
+    min-height: 64px; height: 64px;
+  }
+  .ca-address-box .ca-copy-button {
+    height: 44px; min-height: 44px;
+  }
+  .exchange-item {
+    min-height: 64px; padding: 8px 54px 8px 14px; border-width: 2px;
+  }
+  .exchange-logo {
+    right: 7px; width: 42px; height: 42px;
+  }
+  .exchange-logo img {
+    width: 38px; height: 38px;
+  }
+  .exchange-list .exchange-item .exchange-name, .exchange-name {
+    font-size: clamp(23px, 6.2vw, 31px);
+  }
+  .exchange-list .exchange-item:nth-of-type(6) {
+    padding-left: 18px; padding-right: 56px;
+  }
+  .exchange-list .exchange-item:nth-of-type(6) .exchange-name {
+    font-size: clamp(19px, 4.9vw, 25px);
+  }
+  .exchange-middle-logo {
+    width: 38px; height: 38px; margin: -12px auto;
+  }
+  .hero-main-image, .overview-bottom-image {
+    width: 69.6vw; max-width: 69.6vw;
+  }
+  .hero-main-image {
+    margin: 0 auto 30px; transform: none;
+  }
+  .about-bottom-image, .overview-bottom-image {
+    margin: 54px auto 30px;
+  }
+  .glass-card, .overview-card, .overview-card-two, .referral-card, .task-card, .tokenomics-card {
+    padding: 8px 10px 48px;
+  }
+  .overview-card .aligned-section-content h2, .overview-card h2, .referral-card h2, .task-card h2, .tokenomics-card .aligned-section-content h2, .tokenomics-card h2 {
+    font-size: clamp(66px, 15.5vw, 96px); line-height: 1.04; margin-bottom: 44px;
+  }
+  .two-actions {
+    grid-template-columns: 1fr; gap: 18px; width: min(100% - 60px, 460px); margin-top: 30px;
+  }
+  #claimReferralBtn, #copyRefBtnMobile, .btn, .two-actions .btn {
+    min-height: 66px; padding: 0 10px; font-size: clamp(18px, 4.7vw, 24px);
+  }
+  .x-task-layout {
+    width: min(100% - 24px, 520px); max-width: 520px; margin: -14px auto 14px;
+  }
+  .x-task-three-parts {
+    gap: 58px;
+  }
+  .x-task-part {
+    grid-template-columns: 68px minmax(0, 1fr); gap: 18px;
+  }
+  .x-task-left-icon {
+    width: 68px; min-width: 68px;
+  }
+  .small-round-x, .toaster-character-small, .x-task-guide-icon, .x-task-left-icon .round-x, .x-task-left-icon .small-round-x {
+    width: 68px; height: 68px; min-width: 68px; min-height: 68px; max-width: 68px; max-height: 68px;
+  }
+  .x-task-account-part .x-task-left-icon {
+    transform: translateY(18px);
+  }
+  .x-task-account-part .x-task-right-text {
+    transform: translateY(-10px);
+  }
+  .x-task-mission-part {
+    margin-top: -36px;
+  }
+  .x-task-mission-part .x-task-left-icon {
+    transform: translateY(22px);
+  }
+  .x-task-mission-area {
+    transform: translateY(8px);
+  }
+  #walletText, #xStatusText, .status-pill span, .status-pill strong, .x-task-reward-line .reward {
+    font-size: clamp(33px, 8.3vw, 46px);
+  }
+  .x-task-message {
+    font-size: clamp(28px, 7vw, 38px); line-height: 1.16; margin: 0 0 22px;
+  }
+  .x-task-button-area {
+    margin: 54px auto 0;
+  }
+  .x-task-button-area .mission-actions {
+    width: min(100% - 60px, 460px); max-width: 460px;
+  }
+  .x-task-button-area .mission-actions .btn, .x-task-button-area .mission-actions button, .x-task-button-area .open-task-btn, .x-task-button-area .verify-task-btn {
+    min-height: 66px; padding: 0 10px; font-size: clamp(18px, 4.7vw, 24px);
+  }
+  .tokenomics-card {
+    padding: 4px 12px 80px;
+  }
+  .tokenomics-title-row {
+    margin-bottom: 14px;
+  }
+  .token-number, .token-number span, .tokenomics-card .token-number, .tokenomics-card .token-number span, .tokenomics-card>.tokenomics-center-copy .token-number {
+    font-size: clamp(22px, 5.4vw, 28px);
+  }
+  .tokenomics-center-copy>p:nth-child(5), .tokenomics-center-copy>p:nth-child(6) {
+    width: min(100% - 36px, 520px); font-size: clamp(36px, 8.9vw, 50px);
+  }
+  .overview-card, .overview-card-two {
+    padding-bottom: 70px;
+  }
+  .overview-card-two {
+    padding-bottom: 64px;
+  }
+  #project-overview-2 h2, .overview-card-two .aligned-section-content h2, .overview-card-two h2 {
+    margin-bottom: 52px;
+  }
+  .community-social-actions {
+    width: min(100%, 220px); max-width: 220px; min-height: 86px; margin: 58px auto 8px;
+  }
+  .community-social-icon, .community-social-pill {
+    width: 62px; height: 62px; min-width: 62px; min-height: 62px;
+  }
+  .community-social-pill:first-child {
+    transform: translateY(18px);
+  }
+  .community-social-pill:nth-child(2) {
+    transform: translateY(0);
+  }
+  .community-social-pill:nth-child(3) {
+    transform: translateY(-18px);
+  }
+  .community-social-pill:first-child:hover {
+    transform: translateY(18px);
+  }
+  .community-social-pill:nth-child(2):hover {
+    transform: translateY(0);
+  }
+  .community-social-pill:nth-child(3):hover {
+    transform: translateY(-18px);
+  }
+  .community-social-pill:first-child:active {
+    transform: translateY(20px) scale(.96);
+  }
+  .community-social-pill:nth-child(2):active {
+    transform: translateY(2px) scale(.96);
+  }
+  .community-social-pill:nth-child(3):active {
+    transform: translateY(-16px) scale(.96);
+  }
+  .footer-note {
+    min-height: 64px; padding: 18px 8px 8px; font-size: clamp(16px, 4.1vw, 20px);
+  }
+  #project-overview.overview-card {
+    overflow: visible; padding-left: 0; padding-right: 0;
+  }
+  #community-overview .overview-copy, #community-overview .overview-title-row, #project-overview .overview-copy, #project-overview .overview-title-row {
+    padding-left: 10px; padding-right: 10px;
+  }
+  #project-overview .about-bottom-image {
+    display: block; position: relative; z-index: 1; width: 77vw; max-width: 77vw; height: auto; margin: 50px auto -30px; left: auto; right: auto; transform: none; object-fit: contain; object-position: center center;
+  }
+  .section-bottom-image {
+    width: min(92%, 520px); margin-top: 34px;
+  }
+  .contract-address-wrap {
+    margin-top: 52px;
+  }
+  .contract-address-box {
+    width: min(72vw, 330px); max-width: 330px; min-height: 60px; height: 60px; margin: 0 auto; padding: 3px 4px 3px 15px; transform: translateY(1px);
+  }
+  #contractAddress, .contract-address-input {
+    height: 40px; font-size: 10px; line-height: 40px;
+  }
+  #copyContractBtn, .contract-copy-button {
+    flex: 0 0 34px; width: 34px; height: 40px; min-width: 34px; min-height: 40px; margin-left: 0;
+  }
+  #copyContractBtn svg, .contract-copy-button svg, .contract-copy-icon {
+    width: 18px; height: 18px;
+  }
+  #project-overview-2 .community-social-actions {
+    margin-top: 52px;
+  }
+}
+@media (max-width:430px) {
+  .page-shell {
+    padding-left: 10px; padding-right: 10px;
+  }
+  .brand-mark img {
+    width: 58px; height: 58px; flex-basis: 58px;
+  }
+  .brand-word-text {
+    font-size: 48px; transform: translateY(-2px);
+  }
+  .top-wallet-link {
+    min-width: 104px; max-width: 122px; min-height: 34px; padding: 7px 12px 4px; font-size: 8px;
+  }
+  .hero-oh {
+    gap: 8px;
+  }
+  .hero-oh-small {
+    font-size: clamp(22px, 5.8vw, 29px);
+  }
+  .hero-shit-big {
+    font-size: clamp(60px, 14.5vw, 86px);
+  }
+  #walletText, #xStatusText, .aligned-card-copy p, .hero-copy, .message, .overview-copy p, .referral-intro, .referral-levels p, .reward, .small-message, .status-pill span, .status-pill strong, .x-task-intro p {
+    font-size: clamp(33px, 8.3vw, 46px);
+  }
+  .exchange-list {
+    width: min(72vw, 316px); max-width: 316px; margin-bottom: 62px; gap: 22px;
+  }
+  .ca-exchange-block {
+    --ca-inline-start: 14px; gap: 8px;
+  }
+  .ca-address-text {
+    height: 35px; font-size: 12px; line-height: 35px; margin-right: 2px;
+  }
+  .ca-address-box .ca-copy-button {
+    flex-basis: 46px; width: 46px; height: 42px; min-width: 46px; min-height: 42px;
+  }
+  .exchange-item.ca-address-box {
+    min-height: 62px; height: 62px;
+  }
+  .exchange-item {
+    min-height: 62px; padding: 8px 52px 8px 12px;
+  }
+  .exchange-logo {
+    right: 7px; width: 40px; height: 40px;
+  }
+  .exchange-logo img {
+    width: 36px; height: 36px;
+  }
+  .exchange-list .exchange-item .exchange-name, .exchange-name {
+    font-size: clamp(22px, 5.8vw, 29px);
+  }
+  .exchange-list .exchange-item:nth-of-type(6) .exchange-name {
+    font-size: clamp(18px, 4.7vw, 23px);
+  }
+  .hero-main-image, .overview-bottom-image {
+    width: 67.2vw; max-width: 67.2vw;
+  }
+  .hero-main-image {
+    transform: none;
+  }
+  .overview-card .aligned-section-content h2, .overview-card h2, .referral-card h2, .task-card h2, .tokenomics-card .aligned-section-content h2, .tokenomics-card h2 {
+    font-size: clamp(60px, 14.5vw, 86px);
+  }
+  #refLink, .ref-link-box #refLink, .ref-link-box input, .ref-link-box input#refLink, .ref-link-box textarea {
+    font-size: 10px;
+  }
+  .x-task-layout {
+    width: min(100% - 20px, 420px);
+  }
+  .x-task-three-parts {
+    gap: 56px;
+  }
+  .x-task-part {
+    grid-template-columns: 68px minmax(0, 1fr); gap: 16px;
+  }
+  .x-task-intro-part .x-task-left-icon {
+    transform: translate(0px);
+  }
+  .x-task-intro-part .x-task-right-text {
+    transform: translateY(-8px);
+  }
+  .x-task-intro-part .round-x, .x-task-intro-part .small-round-x {
+    width: 60px; height: 60px; min-width: 60px; min-height: 60px;
+  }
+  .x-task-account-part .x-task-left-icon {
+    transform: translateY(18px);
+  }
+  .x-task-account-part .x-task-right-text {
+    transform: translateY(-19px);
+  }
+  .x-task-mission-part {
+    margin-top: -34px;
+  }
+  .x-task-mission-part .x-task-left-icon {
+    transform: translateY(36px);
+  }
+  .x-task-mission-area {
+    transform: translateY(6px);
+  }
+  #walletText, #xStatusText, .status-pill span, .status-pill strong, .x-task-reward-line .reward {
+    font-size: clamp(33px, 8.3vw, 46px);
+  }
+  #missionList .mission-card .x-task-message, #missionList .x-task-message, .mission-card .x-task-message, .x-task-message, .x-task-mission-area #missionList .mission-card .x-task-message, .x-task-mission-area #missionList .x-task-message, .x-task-mission-area .mission-card .x-task-message, .x-task-mission-area .x-task-message {
+    font-size: clamp(27px, 6.8vw, 36px); line-height: 1.15; margin: 0 0 20px; text-align: left; white-space: normal;
+  }
+  .x-task-button-area {
+    margin: 52px auto 0;
+  }
+  .x-task-button-area .mission-actions {
+    width: min(100% - 54px, 420px); max-width: 420px;
+  }
+  .x-task-button-area .mission-actions .btn, .x-task-button-area .mission-actions button, .x-task-button-area .open-task-btn, .x-task-button-area .verify-task-btn {
+    font-size: clamp(17px, 4.4vw, 23px);
+  }
+  .tokenomics-card {
+    padding-bottom: 80px;
+  }
+  .tokenomics-center-copy>p:nth-child(5) {
+    transform: translateY(-12px);
+  }
+  .tokenomics-center-copy>p:nth-child(5), .tokenomics-center-copy>p:nth-child(6) {
+    width: min(100% - 36px, 520px); font-size: clamp(33px, 8.3vw, 46px);
+  }
+  .overview-card, .overview-card-two {
+    padding-bottom: 64px;
+  }
+  .overview-card-two {
+    padding-bottom: 58px;
+  }
+  .about-bottom-image, .overview-bottom-image {
+    margin: 50px auto 28px;
+  }
+  .community-social-actions {
+    width: min(100%, 220px); max-width: 220px; min-height: 86px; margin: 54px auto 4px;
+  }
+  .community-social-icon, .community-social-pill {
+    width: 62px; height: 62px; min-width: 62px; min-height: 62px;
+  }
+  .community-social-pill:first-child {
+    transform: translateY(18px);
+  }
+  .community-social-pill:nth-child(2) {
+    transform: translateY(0);
+  }
+  .community-social-pill:nth-child(3) {
+    transform: translateY(-18px);
+  }
+  .community-social-pill:first-child:hover {
+    transform: translateY(18px);
+  }
+  .community-social-pill:nth-child(2):hover {
+    transform: translateY(0);
+  }
+  .community-social-pill:nth-child(3):hover {
+    transform: translateY(-18px);
+  }
+  .community-social-pill:first-child:active {
+    transform: translateY(20px) scale(.96);
+  }
+  .community-social-pill:nth-child(2):active {
+    transform: translateY(2px) scale(.96);
+  }
+  .community-social-pill:nth-child(3):active {
+    transform: translateY(-16px) scale(.96);
+  }
+  #project-overview .about-bottom-image {
+    display: block; position: relative; z-index: 1; width: 77vw; max-width: 77vw; height: auto; margin: 50px auto -30px; left: auto; right: auto; transform: none; object-fit: contain; object-position: center center;
+  }
+  .contract-address-wrap {
+    margin-top: 50px;
+  }
+  .contract-address-box {
+    width: min(70vw, 300px); max-width: 300px; min-height: 58px; height: 58px; padding: 6px 2px 6px 14px;
+  }
+  #contractAddress, .contract-address-input {
+    height: 46px; margin-right: -10px; padding-right: 0; font-size: 12px; line-height: 46px; text-overflow: clip;
+  }
+  #copyContractBtn, .contract-copy-button {
+    top: 2px; flex: 0 0 38px; width: 38px; height: 46px; min-width: 38px; min-height: 46px; margin-left: -10px;
+  }
+  #copyContractBtn svg, .contract-copy-button svg, .contract-copy-icon {
+    width: 25px; height: 25px;
+  }
+  #project-overview-2 .community-social-actions {
+    margin-top: 50px;
+  }
+}
+/* Keep the four large character images centered and align their bottom spacing. */
+.hero-main-image, #project-overview .about-bottom-image, #community-overview .section-bottom-image, #project-overview-2 .dev-wallet-bottom-image {
+  display: block; position: relative; left: auto; right: auto; margin-left: auto; margin-right: auto; transform: none; object-position: center center;
+}
+#project-overview .about-bottom-image, #community-overview .section-bottom-image, #project-overview-2 .dev-wallet-bottom-image {
+  margin-bottom: 0;
+}
+#project-overview, #community-overview {
+  padding-bottom: 56px;
+}
+#project-overview-2 {
+  padding-bottom: 84px;
+}
+#project-overview-2 .dev-wallet-bottom-image {
+  width: min(90%, 558px); max-width: 90%; margin-top: 62px;
+}
+.dev-wallet-address-label {
+  display: block; width: min(100% - 60px, 460px); max-width: 460px; margin: 0 auto 0; padding-left: 34px; color: var(--white); font-family: Nebyla, Arial, sans-serif; font-size: 52px; font-style: italic; font-weight: 400; line-height: 1; text-align: left; white-space: nowrap; transform: translateX(-4px); text-shadow: 0 3px 4px rgba(0, 0, 0, .22);
+}
+.dev-wallet-address-initial {
+  display: inline-block; font-size: clamp(94px, 11vw, 151px); line-height: 1.02; vertical-align: -0.08em; transform: translateY(-0.14em);
+}
+#community-overview .section-bottom-image {
+  transform: translateX(20px);
+}
+@media (max-width:767px) {
+  #project-overview, #community-overview {
+    padding-bottom: 58px;
+  }
+  #project-overview-2 {
+    padding-bottom: 86px;
+  }
+  #project-overview-2 .dev-wallet-bottom-image {
+    width: min(82.8%, 468px); max-width: 82.8%;
+  }
+  .dev-wallet-address-label {
+    width: min(72vw, 330px); max-width: 330px; padding-left: 15px; font-size: 32px;
+  }
+  .dev-wallet-address-initial {
+    font-size: clamp(79px, 18.6vw, 115px);
+  }
+  .exchange-list {
+    margin-left: auto; margin-right: auto; transform: none;
+  }
+  .exchange-list > .exchange-item:last-child .exchange-name {
+    font-size: 20px; letter-spacing: 0;
+  }
+  #community-overview .section-bottom-image {
+    transform: translateX(12px);
+  }
+}
+@media (max-width:430px) {
+  .dev-wallet-address-label {
+    width: min(70vw, 300px); max-width: 300px; padding-left: 14px; font-size: 32px;
+  }
+  .dev-wallet-address-initial {
+    font-size: clamp(72px, 17.4vw, 103px);
+  }
+  .ca-exchange-block {
+    gap: 16px;
+  }
+  .ca-exchange-block, .exchange-list > .exchange-item {
+    box-sizing: border-box; justify-self: stretch; width: 100%; max-width: none; margin-left: 0; margin-right: 0;
+  }
+  .exchange-list {
+    transform: none;
+  }
+  .exchange-list > .exchange-item:last-child .exchange-name {
+    font-size: 18px;
+  }
+}

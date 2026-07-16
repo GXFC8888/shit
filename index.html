@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en" class="fonts-loading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Join the SHIT Ethereum airdrop, invite friends, complete X tasks, and claim community rewards."
+    />
+
+    <title>SHIT - Referral Airdrop &amp; X Tasks</title>
+
+    <link
+      rel="icon"
+      href="/images/favicon.webp?v=3"
+      type="image/webp"
+    />
+
+    <link
+      rel="preload"
+      href="/webFonts/Nebyla/NebylaRegular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/webFonts/Evermore/Evermore.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
+    <link
+      rel="preload"
+      href="/webFonts/Evermore/EvermoreItalic.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="/style.css?v=20260715css3" />
+
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const revealPage = () => root.classList.remove("fonts-loading");
+
+        if (!document.fonts) {
+          revealPage();
+          return;
+        }
+
+        const safetyTimer = window.setTimeout(revealPage, 10000);
+
+        Promise.all([
+          document.fonts.load('400 1em "Nebyla"'),
+          document.fonts.load('italic 400 1em "EvermoreItalic"'),
+          document.fonts.load('400 1em "EvermoreRegular"'),
+        ])
+          .then(() => document.fonts.ready)
+          .then(() => {
+            window.clearTimeout(safetyTimer);
+            revealPage();
+          })
+          .catch(() => {
+            window.clearTimeout(safetyTimer);
+            revealPage();
+          });
+      })();
+    </script>
+  </head>
+
+  <body>
+    <main class="page-shell">
+      <!-- Site header -->
+      <header class="hero-top" id="home">
+        <a class="brand-mark" href="#home" aria-label="SHIT home">
+          <img src="/images/logo.png" alt="SHIT character" />
+
+          <span class="brand-word-text"> SHIT </span>
+        </a>
+
+        <button id="connectBtn" class="top-wallet-link" type="button">
+          Link wallet
+        </button>
+      </header>
+
+      <!-- Hero and exchange links -->
+      <section class="hero-card">
+        <h1 class="tagline hero-tagline">
+          <span class="hero-oh">
+            <span class="hero-oh-small"> Oh </span>
+
+            <span class="hero-shit-big"> SHIT </span>
+          </span>
+
+          <span class="hero-copy">
+            The craziest memecoin airdrop experiment in existence is starting!
+            Claim $shit for free and have fun
+          </span>
+        </h1>
+
+        <div class="social-actions icon-only-actions three-social-icons">
+          <a
+            class="social-pill coming-soon-link"
+            href="#"
+            aria-label="CoinGecko"
+          >
+            <span class="social-icon image-icon">
+              <img src="/images/coingecko.svg" alt="CoinGecko" />
+            </span>
+          </a>
+
+          <button
+            id="musicToggleBtn"
+            class="social-pill music-record-button"
+            type="button"
+            aria-label="Play or pause music"
+          >
+            <span class="social-icon image-icon record-image-icon">
+              <img
+                id="musicRecordIcon"
+                src="/images/song.webp"
+                alt="SHIT song record"
+              />
+            </span>
+          </button>
+
+          <a
+            class="social-pill coming-soon-link"
+            href="#"
+            aria-label="CoinMarketCap"
+          >
+            <span class="social-icon image-icon">
+              <img src="/images/coinmarketcap.png" alt="CoinMarketCap" />
+            </span>
+          </a>
+        </div>
+
+        <div class="exchange-list" aria-label="Exchange links">
+          <div class="ca-exchange-block">
+            <div class="ca-label">CA:</div>
+
+            <div class="exchange-item ca-address-box">
+              <span id="heroContractAddress" class="ca-address-text">
+                0x2170ed0...33f8
+              </span>
+
+              <button
+                id="copyHeroContractBtn"
+                class="contract-copy-button ca-copy-button"
+                type="button"
+                aria-label="Copy contract address"
+              >
+                <svg
+                  class="contract-copy-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <rect x="8" y="8" width="11" height="11" rx="2" ry="2"></rect>
+
+                  <path
+                    d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <a class="exchange-item coming-soon-link" href="#" aria-label="Bybit">
+            <span class="exchange-name"> bybit </span>
+
+            <span class="exchange-logo">
+              <img src="/images/bybit.png" alt="Bybit" />
+            </span>
+          </a>
+
+          <a class="exchange-item coming-soon-link" href="#" aria-label="Upbit">
+            <span class="exchange-name"> upbit </span>
+
+            <span class="exchange-logo">
+              <img src="/images/upbit.png" alt="Upbit" />
+            </span>
+          </a>
+
+          <a
+            class="exchange-item coming-soon-link"
+            href="#"
+            aria-label="Kraken"
+          >
+            <span class="exchange-name"> kraken </span>
+
+            <span class="exchange-logo">
+              <img src="/images/kraken.png" alt="Kraken" />
+            </span>
+          </a>
+
+          <img
+            class="exchange-middle-logo"
+            src="/images/converted.png"
+            alt="KuCoin"
+          />
+
+          <a
+            class="exchange-item coming-soon-link"
+            href="#"
+            aria-label="Coinbase"
+          >
+            <span class="exchange-name"> coinbase </span>
+
+            <span class="exchange-logo">
+              <img src="/images/coinbase.png" alt="Coinbase" />
+            </span>
+          </a>
+
+          <a
+            class="exchange-item coming-soon-link"
+            href="#"
+            aria-label="Crypto.com"
+          >
+            <span class="exchange-name"> crypto.com </span>
+
+            <span class="exchange-logo">
+              <img src="/images/cryptocom.png" alt="Crypto.com" />
+            </span>
+          </a>
+        </div>
+
+        <img
+          class="hero-main-image"
+          src="/images/walker.webp"
+          alt="SHIT character walking dogs"
+        />
+      </section>
+
+      <div class="pepe-divider"></div>
+
+      <!-- Airdrop and project information -->
+      <section class="airdrop-stack" id="airdrop">
+        <article class="glass-card referral-card">
+          <div class="card-title-row center-card-title-row">
+            <div>
+              <h2>Airdrop1: Refer</h2>
+
+              <p class="referral-intro">
+                Copy link: Invite frens and earn 6-level referral rewards
+              </p>
+
+              <div class="referral-levels">
+                <p>level1: 100%</p>
+                <p>level2: 50%</p>
+                <p>level3: 40%</p>
+                <p>level4: 30%</p>
+                <p>level5: 20%</p>
+                <p>level6: 10%</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ref-link-box">
+            <input
+              id="refLink"
+              type="text"
+              value="https://shittoken.us/?ref=YOURID"
+              readonly
+              aria-label="Referral link"
+            />
+
+            <button
+              id="copyRefBtn"
+              class="icon-copy hidden-copy-button"
+              type="button"
+              aria-label="Copy referral link"
+            ></button>
+          </div>
+
+          <div class="two-actions">
+            <button
+              id="copyRefBtnMobile"
+              class="btn light copy-ref-proxy"
+              type="button"
+            >
+              Copy Link
+            </button>
+
+            <button
+              id="claimReferralBtn"
+              class="btn dark"
+              type="button"
+              disabled
+            >
+              Claim Airdrop
+            </button>
+          </div>
+
+          <p
+            id="refMessage"
+            class="message small-message"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
+        </article>
+
+        <div class="pepe-divider"></div>
+
+        <article class="glass-card task-card">
+          <div class="card-title-row center-card-title-row task-title-row">
+            <div>
+              <h2>
+                Airdrop2:<br />
+                X Tweet
+              </h2>
+            </div>
+          </div>
+
+          <div class="x-task-layout">
+            <div class="x-task-three-parts">
+              <div class="x-task-part x-task-intro-part">
+                <div class="x-task-left-icon">
+                  <button
+                    id="xProfileAppBtn"
+                    class="round-x small-round-x x-task-twitter-link"
+                    type="button"
+                    aria-label="Open SHIT on X"
+                  >
+                    <img src="/images/x.svg" alt="X" />
+                  </button>
+                </div>
+
+                <div class="x-task-right-text">
+                  <div class="x-task-intro">
+                    <p>
+                      Smash the latest<br />
+                      X tweet and<br />
+                      claim rewards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="x-task-part x-task-account-part">
+                <div class="x-task-left-icon">
+                  <img
+                    class="toaster-character-small"
+                    src="/images/toaster.webp"
+                    alt="SHIT toaster character"
+                  />
+                </div>
+
+                <div class="x-task-right-text">
+                  <div class="x-right-content">
+                    <div class="wallet-status-grid">
+                      <div class="status-pill">
+                        <span> Wallet </span>
+
+                        <strong id="walletText"> Not connected </strong>
+                      </div>
+
+                      <div class="status-pill">
+                        <span> X Connected: </span>
+
+                        <strong id="xStatusText"> Not connected </strong>
+                      </div>
+                    </div>
+
+                    <div class="x-task-reward-line">
+                      <div class="reward">Reward: 100b</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="x-task-part x-task-mission-part">
+                <div class="x-task-left-icon">
+                  <img
+                    class="x-task-guide-icon"
+                    src="/images/green.webp"
+                    alt="X task guide"
+                  />
+                </div>
+
+                <div class="x-task-right-text">
+                  <div class="x-task-mission-area">
+                    <p
+                      id="message"
+                      class="message hidden"
+                      aria-live="polite"
+                      aria-atomic="true"
+                    ></p>
+
+                    <div id="missionList" class="mission-list compact-missions">
+                      <div class="mission-card empty">
+                        <h3>
+                          Connect your wallet to load the latest official X
+                          mission.
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="xTaskButtonArea" class="x-task-button-area"></div>
+          </div>
+        </article>
+
+        <div class="pepe-divider"></div>
+
+        <article class="glass-card tokenomics-card" id="tokenomics">
+          <div
+            class="card-title-row tokenomics-title-row aligned-section-row center-card-title-row"
+          >
+            <div class="aligned-section-content">
+              <h2>Tokenomics</h2>
+            </div>
+          </div>
+
+          <div class="tokenomics-copy aligned-card-copy tokenomics-center-copy">
+            <p>Token Supply:</p>
+
+            <p class="token-number">
+              <span> 1,000,000,000, </span>
+
+              <span> 000,000 </span>
+            </p>
+
+            <p>Airdrop Supply:</p>
+
+            <p class="token-number">
+              <span> 500,000,000, </span>
+
+              <span> 000,000 </span>
+            </p>
+
+            <p>LP tokens are burnt, and contract ownership is renounced.</p>
+
+            <p>No Taxes, No insiders. No whale games.</p>
+          </div>
+        </article>
+
+        <div class="pepe-divider"></div>
+
+        <article class="glass-card overview-card" id="project-overview">
+          <div
+            class="card-title-row overview-title-row aligned-section-row center-card-title-row"
+          >
+            <div class="aligned-section-content">
+              <h2>About</h2>
+            </div>
+          </div>
+
+          <div class="overview-copy aligned-card-copy">
+            <p>Pure community chaos. Free claim. No whale games.</p>
+
+            <p>
+              $shit is a wild memecoin airdrop experiment, launched organically
+              by crypto lovers from communities all around the world.
+            </p>
+
+            <p>You no longer need to buy the token.</p>
+          </div>
+
+          <img
+            class="overview-bottom-image about-bottom-image"
+            src="/images/about.webp"
+            alt="SHIT about character"
+          />
+        </article>
+
+        <div class="pepe-divider"></div>
+
+        <article class="glass-card overview-card" id="community-overview">
+          <div
+            class="card-title-row overview-title-row aligned-section-row center-card-title-row"
+          >
+            <div class="aligned-section-content">
+              <h2>Community</h2>
+            </div>
+          </div>
+
+          <div class="overview-copy aligned-card-copy">
+            <p>
+              50% of the total $shit supply will be airdropped to the community.
+            </p>
+
+            <p>All you have to do is invite others to claim for free.</p>
+
+            <p>The more you refer, the more you claim.</p>
+          </div>
+
+          <img
+            class="section-bottom-image"
+            src="/images/community.webp"
+            alt="Community"
+          />
+        </article>
+
+        <div class="pepe-divider"></div>
+
+        <article
+          class="glass-card overview-card overview-card-two"
+          id="project-overview-2"
+        >
+          <div
+            class="card-title-row overview-title-row aligned-section-row center-card-title-row"
+          >
+            <div class="aligned-section-content">
+              <h2>Dev Wallet</h2>
+            </div>
+          </div>
+
+          <div class="overview-copy aligned-card-copy">
+            <p>The community has raised 100 eth for liquidity.</p>
+
+            <p>No insiders. No whale games. Just pure community chaos.</p>
+          </div>
+
+          <div class="contract-address-wrap">
+            <div class="dev-wallet-address-label">
+              <span class="dev-wallet-address-initial">S</span>hit Dev Wallet:
+            </div>
+
+            <div
+              id="contractAddressBox"
+              class="contract-address-box"
+            >
+              <input
+                id="contractAddress"
+                class="contract-address-input"
+                type="text"
+                value="0x423f4e6138e475d85cf7ea071ac92097ed631eea"
+                readonly
+                aria-label="Dev wallet address"
+              />
+
+              <button
+                id="copyContractBtn"
+                class="contract-copy-button"
+                type="button"
+                aria-label="Copy dev wallet address"
+              >
+                <svg
+                  class="contract-copy-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <rect x="8" y="8" width="11" height="11" rx="2" ry="2"></rect>
+
+                  <path
+                    d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="community-social-actions" aria-label="Community links">
+            <a
+              class="community-social-pill coming-soon-link"
+              href="#"
+              aria-label="Etherscan"
+            >
+              <span class="community-social-icon">
+                <img src="/images/etherscan.png" alt="Etherscan" />
+              </span>
+            </a>
+
+            <button
+              id="communityXAppBtn"
+              class="community-social-pill"
+              type="button"
+              aria-label="Open SHIT on X"
+            >
+              <span class="community-social-icon community-x-icon">
+                <img src="/images/x.svg" alt="X" />
+              </span>
+            </button>
+
+            <a
+              class="community-social-pill coming-soon-link"
+              href="#"
+              aria-label="Uniswap"
+            >
+              <span class="community-social-icon">
+                <img src="/images/uniswap.png" alt="Uniswap" />
+              </span>
+            </a>
+          </div>
+
+          <img
+            class="section-bottom-image dev-wallet-bottom-image"
+            src="/images/dev.webp"
+            alt="Dev Wallet"
+          />
+        </article>
+      </section>
+
+      <footer class="footer-note">© 2026 by Shit. All rights reserved!</footer>
+    </main>
+
+    <div
+      id="customAlert"
+      class="custom-alert hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="customAlertTitle"
+      aria-describedby="customAlertText"
+    >
+      <div class="custom-alert-box">
+        <h3 id="customAlertTitle">Notice</h3>
+
+        <p id="customAlertText">
+          $shit is still in the airdrop phase. Trading has not launched yet.
+        </p>
+
+        <button id="customAlertOk" type="button">OK</button>
+      </div>
+    </div>
+
+    <audio
+      id="bgMusic"
+      src="/audio/shit.mp3"
+      loop
+      preload="metadata"
+    ></audio>
+
+    <script src="/vendor/ethers.umd.min.js?v=5.8.0"></script>
+
+    <script src="/script.js?v=20260715eth1"></script>
+  </body>
+</html>

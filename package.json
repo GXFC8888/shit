@@ -1,0 +1,19 @@
+{
+  "name": "shit-airdrop-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "echo ok"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "twitter-api-v2": "^1.17.2",
+    "ethers": "^5.8.0"
+  },
+  "overrides": {
+    "ws": "8.21.0"
+  }
+}
