@@ -3,7 +3,7 @@ import { getOAuthClient } from "../lib/x.js";
 
 const X_API_BASE = "https://api.x.com/2";
 const CONFIGURED_OFFICIAL_USERNAME = String(
-  process.env.X_OFFICIAL_USERNAME || "GXFCLJ"
+  process.env.X_OFFICIAL_USERNAME || "GXFCRS"
 )
   .trim()
   .replace(/^@+/, "");
