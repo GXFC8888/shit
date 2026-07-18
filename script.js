@@ -9,7 +9,7 @@ const TOKEN_CONTRACT_ADDRESS = "0xe198cab05ddd117c6b4f67e24e329f2730c13dd3";
 
 const HERO_CONTRACT_ADDRESS = "0x2170ed0880ac9a755fd29b2688956bd959f933f8";
 
-function formatContractAddress(address, visiblePrefixLength = 11) {
+function formatContractAddress(address, visiblePrefixLength = 10) {
   return `${address.slice(0, visiblePrefixLength)}...${address.slice(-4)}`;
 }
 
