@@ -1177,8 +1177,8 @@ function renderMissions() {
 
       <p class="message x-task-message">
         Follow @${escapeHtml(OFFICIAL_X_USERNAME)},<br />
-        like, repost, and<br />
-        comment. Then tap<br />
+        like, repost,<br />
+        and comment.<br />
         Claim Reward.
       </p>
 
