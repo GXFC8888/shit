@@ -331,7 +331,7 @@ h2, h3 {
   transform: none;
 }
 .x-task-mission-part {
-  align-items: center; margin-top: -42px;
+  align-items: center;
 }
 .x-task-mission-part .x-task-left-icon {
   margin-bottom: 28px;
@@ -737,9 +737,6 @@ h2, h3 {
   .x-task-account-part .x-task-right-text {
     transform: none;
   }
-  .x-task-mission-part {
-    margin-top: -36px;
-  }
   .x-task-mission-part .x-task-left-icon {
     margin-bottom: 22px;
     transform: none;
@@ -940,9 +937,6 @@ h2, h3 {
   }
   .x-task-account-part .x-task-right-text {
     transform: none;
-  }
-  .x-task-mission-part {
-    margin-top: -34px;
   }
   .x-task-mission-part .x-task-left-icon {
     margin-bottom: 20px;
