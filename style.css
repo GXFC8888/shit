@@ -316,28 +316,29 @@ h2, h3 {
   display: grid; width: 100%;
 }
 .x-task-part {
-  grid-template-columns: 96px minmax(0, 1fr); align-items: start; gap: 28px;
+  grid-template-columns: 96px minmax(0, 1fr); align-items: center; gap: 28px;
 }
 .x-task-intro-part {
   align-items: center;
 }
 .x-task-account-part {
-  align-items: start;
+  align-items: center;
 }
 .x-task-account-part .x-task-left-icon {
-  transform: translateY(22px);
+  transform: none;
 }
 .x-task-account-part .x-task-right-text {
-  transform: translateY(-14px);
+  transform: none;
 }
 .x-task-mission-part {
-  margin-top: -42px;
+  align-items: center; margin-top: -42px;
 }
 .x-task-mission-part .x-task-left-icon {
-  transform: translateY(26px);
+  margin-bottom: 28px;
+  transform: none;
 }
 .x-task-left-icon {
-  display: flex; align-items: flex-start; justify-content: center; width: 96px; min-width: 96px;
+  display: flex; align-items: center; justify-content: center; width: 96px; min-width: 96px;
 }
 .x-task-right-text {
   display: block; width: 100%; min-width: 0; text-align: left; overflow: visible;
@@ -403,7 +404,7 @@ h2, h3 {
   display: block; width: 100%; margin: 0; padding: 0; text-align: left;
 }
 .x-task-mission-area {
-  max-width: 100%; overflow: visible; transform: translateY(16px);
+  max-width: 100%; overflow: visible; transform: none;
 }
 #missionList .mission-card .x-task-message, #missionList .x-task-message, .mission-card .x-task-message, .x-task-message, .x-task-mission-area #missionList .mission-card .x-task-message, .x-task-mission-area #missionList .x-task-message, .x-task-mission-area .mission-card .x-task-message, .x-task-mission-area .x-task-message {
   position: static; display: block; width: 100%; max-width: 100%; height: auto; min-height: 0; margin: 0 0 28px; padding: 0; border: 0; border-radius: 0; color: var(--white); background: transparent; font-family: Nebyla, Arial, sans-serif; font-size: clamp(44px, 5.4vw, 66px); font-weight: 400; line-height: 1.26; text-align: left; text-shadow: 0 3px 4px rgba(0, 0, 0, .32); white-space: normal; overflow-wrap: normal; opacity: 1; visibility: visible; box-shadow: none; box-sizing: border-box;
@@ -605,10 +606,11 @@ h2, h3 {
     font-size: clamp(22px, 2.8vw, 34px);
   }
   .x-task-account-part .x-task-left-icon {
-    transform: translateY(52px);
+    transform: none;
   }
   .x-task-mission-part .x-task-left-icon {
-    transform: translateY(72px);
+    margin-bottom: 28px;
+    transform: none;
   }
 }
 @media (max-width:767px) {
@@ -730,19 +732,20 @@ h2, h3 {
     width: 68px; height: 68px; min-width: 68px; min-height: 68px; max-width: 68px; max-height: 68px;
   }
   .x-task-account-part .x-task-left-icon {
-    transform: translateY(18px);
+    transform: none;
   }
   .x-task-account-part .x-task-right-text {
-    transform: translateY(-10px);
+    transform: none;
   }
   .x-task-mission-part {
     margin-top: -36px;
   }
   .x-task-mission-part .x-task-left-icon {
-    transform: translateY(22px);
+    margin-bottom: 22px;
+    transform: none;
   }
   .x-task-mission-area {
-    transform: translateY(8px);
+    transform: none;
   }
   #walletText, #xStatusText, .status-pill span, .status-pill strong, .x-task-reward-line .reward {
     font-size: clamp(33px, 8.3vw, 46px);
@@ -927,25 +930,26 @@ h2, h3 {
     transform: translate(0px);
   }
   .x-task-intro-part .x-task-right-text {
-    transform: translateY(-8px);
+    transform: none;
   }
   .x-task-intro-part .round-x, .x-task-intro-part .small-round-x {
     width: 60px; height: 60px; min-width: 60px; min-height: 60px;
   }
   .x-task-account-part .x-task-left-icon {
-    transform: translateY(18px);
+    transform: none;
   }
   .x-task-account-part .x-task-right-text {
-    transform: translateY(-19px);
+    transform: none;
   }
   .x-task-mission-part {
     margin-top: -34px;
   }
   .x-task-mission-part .x-task-left-icon {
-    transform: translateY(36px);
+    margin-bottom: 20px;
+    transform: none;
   }
   .x-task-mission-area {
-    transform: translateY(6px);
+    transform: none;
   }
   #walletText, #xStatusText, .status-pill span, .status-pill strong, .x-task-reward-line .reward {
     font-size: clamp(33px, 8.3vw, 46px);
