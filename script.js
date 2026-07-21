@@ -46,6 +46,8 @@ let currentProgress = [];
 let currentXConnected = false;
 let currentXUsername = null;
 
+const X_BINDING_CONFLICT_STORAGE_PREFIX = "x_binding_conflict_";
+
 let isConnectingWallet = false;
 let isLoadingTasks = false;
 let isVerifying = false;
@@ -364,6 +366,62 @@ function clearPendingXState() {
   localStorage.removeItem("pending_official_verify");
   localStorage.removeItem("pending_verify_task_id");
   localStorage.removeItem("pending_open_tweet_id");
+  localStorage.removeItem("pending_x_wallet");
+}
+
+function getXBindingConflictStorageKey(address) {
+  return `${X_BINDING_CONFLICT_STORAGE_PREFIX}${normalizeWallet(address)}`;
+}
+
+function setXBindingConflict(address, boundWalletHint) {
+  if (!address) return;
+
+  try {
+    sessionStorage.setItem(
+      getXBindingConflictStorageKey(address),
+      String(boundWalletHint || "the original wallet"),
+    );
+  } catch (error) {
+    console.warn("Unable to save X binding conflict state:", error);
+  }
+}
+
+function clearXBindingConflict(address) {
+  if (!address) return;
+
+  try {
+    sessionStorage.removeItem(getXBindingConflictStorageKey(address));
+  } catch (error) {
+    console.warn("Unable to clear X binding conflict state:", error);
+  }
+}
+
+function getXBindingConflict(address) {
+  if (!address) return null;
+
+  try {
+    const boundWalletHint = sessionStorage.getItem(
+      getXBindingConflictStorageKey(address),
+    );
+
+    return boundWalletHint
+      ? {
+          attemptedWallet: normalizeWallet(address),
+          boundWalletHint,
+        }
+      : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function getXBindingConflictMessage(conflict) {
+  const boundWalletHint =
+    conflict && conflict.boundWalletHint
+      ? conflict.boundWalletHint
+      : "the original wallet";
+
+  return `This X account is permanently linked to wallet ${boundWalletHint}. Please switch back to that wallet.`;
 }
 
 function getLatestTask() {
@@ -757,9 +815,7 @@ function listenWalletChange() {
 
         localStorage.removeItem("current_official_tweet_id");
 
-        localStorage.removeItem("pending_verify_task_id");
-
-        localStorage.removeItem("pending_open_tweet_id");
+        clearPendingXState();
 
         await setupWalletAfterConnected();
 
@@ -981,28 +1037,6 @@ async function loadTasks(runPendingActions = true) {
 
     if (activeWallet && currentXConnected) {
       showMessage("");
-
-      if (runPendingActions) {
-        const pendingVerifyTaskId = localStorage.getItem(
-          "pending_verify_task_id",
-        );
-
-        if (pendingVerifyTaskId) {
-          const pendingTask = getTaskById(pendingVerifyTaskId);
-
-          localStorage.removeItem("pending_verify_task_id");
-
-          localStorage.removeItem("pending_official_verify");
-
-          if (pendingTask && isLatestTask(pendingTask)) {
-            setTimeout(() => {
-              verifyAndClaim(pendingTask);
-            }, 600);
-
-            return;
-          }
-        }
-      }
     } else if (activeWallet && !currentXConnected) {
       showMessage("", "ok");
     } else {
@@ -1128,7 +1162,10 @@ function renderMissions() {
     noNewMissionTaskId &&
     Number(noNewMissionTaskId) === Number(latestTask.id);
 
-  const verifyDisabled = isVerifying || noNewMissionForThisTask;
+  const bindingConflict = getXBindingConflict(activeWallet);
+
+  const verifyDisabled =
+    isVerifying || noNewMissionForThisTask || Boolean(bindingConflict);
 
   const openDisabled = claimed || currentXConnected;
 
@@ -1223,6 +1260,12 @@ function renderMissions() {
 
   if (openButton) {
     openButton.addEventListener("click", () => {
+      if (bindingConflict) {
+        showCustomAlert(getXBindingConflictMessage(bindingConflict));
+
+        return;
+      }
+
       if (claimed) {
         showMessage("Latest mission already claimed.", "ok");
 
@@ -1254,6 +1297,14 @@ function openTaskX(tweetId) {
 
   if (!activeWallet) {
     showMessage("Please connect wallet first.", "err");
+
+    return;
+  }
+
+  const bindingConflict = getXBindingConflict(activeWallet);
+
+  if (bindingConflict) {
+    showCustomAlert(getXBindingConflictMessage(bindingConflict));
 
     return;
   }
@@ -1387,8 +1438,15 @@ function shouldLockClaimButton(data) {
   );
 }
 
-function needsXAuthorization(data) {
-  if (data && data.reconnectX) {
+function requiresXLink(data) {
+  if (data && data.requiresXLink) {
+    return true;
+  }
+
+  if (
+    data &&
+    ["X_NOT_LINKED", "X_TOKEN_MISSING", "X_TOKEN_EXPIRED"].includes(data.code)
+  ) {
     return true;
   }
 
@@ -1406,24 +1464,6 @@ function needsXAuthorization(data) {
     text.includes("x account not connected") ||
     text.includes("no x account")
   );
-}
-
-function redirectToXAuthorization(activeWallet, taskId = null) {
-  localStorage.setItem("pending_official_verify", "true");
-
-  localStorage.setItem("pending_x_wallet", activeWallet);
-
-  if (taskId) {
-    localStorage.setItem("pending_verify_task_id", String(taskId));
-  }
-
-  showMessage("X authorization is required once. Redirecting to X...", "ok");
-
-  setTimeout(() => {
-    window.location.href = `/api/x/login?wallet=${encodeURIComponent(
-      activeWallet,
-    )}`;
-  }, 300);
 }
 
 async function getClaimSignature(activeWallet, tweetId) {
@@ -1551,6 +1591,14 @@ async function verifyAndClaim(task) {
     return;
   }
 
+  const bindingConflict = getXBindingConflict(activeWallet);
+
+  if (bindingConflict) {
+    showCustomAlert(getXBindingConflictMessage(bindingConflict));
+
+    return;
+  }
+
   const latestTask = getLatestTask();
 
   if (!task || !task.id || !latestTask) {
@@ -1591,15 +1639,21 @@ async function verifyAndClaim(task) {
     }
 
     if (!verifyData.success) {
-      if (needsXAuthorization(verifyData)) {
+      if (requiresXLink(verifyData)) {
         clearXConnected(activeWallet);
 
         currentXConnected = false;
 
+        currentXUsername = null;
+
+        clearPendingXState();
+
         updateWalletUI();
         renderMissions();
 
-        redirectToXAuthorization(activeWallet, taskId);
+        showCustomAlert(
+          verifyData.message || "Please link your X account first.",
+        );
 
         return;
       }
@@ -1794,6 +1848,8 @@ function handleUrlStatus() {
       setXConnected(activeWallet);
 
       currentXConnected = true;
+
+      clearXBindingConflict(activeWallet);
     }
 
     if (xUsernameFromUrl) {
@@ -1811,22 +1867,50 @@ function handleUrlStatus() {
   const xError = params.get("x_error");
 
   if (xError) {
-    const errorMap = {
-      already_bound: "This X account is already bound to another wallet.",
+    if (xError === "already_bound") {
+      const attemptedWallet =
+        params.get("attempted_wallet") ||
+        userAddress ||
+        localStorage.getItem("wallet_address") ||
+        localStorage.getItem("pending_x_wallet");
 
+      const boundWalletHint =
+        params.get("bound_wallet") || "the original wallet";
+
+      if (attemptedWallet) {
+        setXBindingConflict(attemptedWallet, boundWalletHint);
+        clearXConnected(attemptedWallet);
+      }
+
+      currentXConnected = false;
+      currentXUsername = null;
+      clearPendingXState();
+      updateWalletUI();
+      renderMissions();
+
+      showCustomAlert(
+        getXBindingConflictMessage({ boundWalletHint }),
+      );
+    }
+
+    const errorMap = {
       missing_oauth_params:
-        "Missing X authorization data. Please try Claim Reward again.",
+        "Missing X authorization data. Please tap Link X and try again.",
 
       oauth_state_not_found:
-        "X authorization expired or opened in another browser. Please try Claim Reward again.",
+        "X authorization expired or opened in another browser. Please tap Link X and try again.",
 
-      oauth_expired: "X authorization expired. Please try Claim Reward again.",
+      oauth_expired: "X authorization expired. Please tap Link X and try again.",
 
       missing_wallet:
         "Missing wallet address. Please connect wallet and try again.",
     };
 
-    showMessage(errorMap[xError] || `X connection failed: ${xError}`, "err");
+    if (xError !== "already_bound") {
+      showCustomAlert(
+        errorMap[xError] || `X connection failed: ${xError}`,
+      );
+    }
 
     const cleanUrl =
       window.location.origin + window.location.pathname + window.location.hash;
