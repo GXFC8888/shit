@@ -53,7 +53,7 @@ export default async function handler(req, res) {
     if (wallet) {
       const { data: userData, error: userError } = await supabase
         .from("users")
-        .select("x_user_id, x_username")
+        .select("x_user_id, x_username, x_access_token, x_refresh_token")
         .eq("wallet_address", wallet)
         .maybeSingle();
 
@@ -85,7 +85,11 @@ export default async function handler(req, res) {
       latestTaskId: latestTask ? latestTask.id : null,
       latestTweetId: latestTask ? String(latestTask.tweet_id) : null,
       officialXUsername: OFFICIAL_X_USERNAME,
-      xConnected: Boolean(xAccount && xAccount.x_user_id),
+      xConnected: Boolean(
+        xAccount &&
+          xAccount.x_user_id &&
+          (xAccount.x_access_token || xAccount.x_refresh_token)
+      ),
       xUsername: xAccount ? xAccount.x_username : null
     });
   } catch (err) {
