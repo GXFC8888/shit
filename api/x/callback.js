@@ -392,9 +392,13 @@ export default async function handler(req, res) {
     const xUserId = String(me.data.id);
     const xUsername = String(me.data.username);
 
+    const tokenExpiresAt = expiresIn
+      ? new Date(Date.now() + Number(expiresIn) * 1000).toISOString()
+      : null;
+
     const { data: existingXUser, error: existingXUserError } = await supabase
       .from("users")
-      .select("wallet_address")
+      .select("wallet_address,x_refresh_token")
       .eq("x_user_id", xUserId)
       .maybeSingle();
 
@@ -407,18 +411,36 @@ export default async function handler(req, res) {
       existingXUser.wallet_address &&
       String(existingXUser.wallet_address).toLowerCase() !== walletAddress
     ) {
+      const boundWalletAddress = String(
+        existingXUser.wallet_address
+      ).toLowerCase();
+
+      const authorizationUpdate = {
+        x_username: xUsername,
+        x_access_token: accessToken,
+        x_refresh_token: refreshToken || existingXUser.x_refresh_token || null,
+        x_token_expires_at: tokenExpiresAt,
+        updated_at: new Date().toISOString()
+      };
+
+      const { error: authorizationUpdateError } = await supabase
+        .from("users")
+        .update(authorizationUpdate)
+        .eq("wallet_address", boundWalletAddress)
+        .eq("x_user_id", xUserId);
+
+      if (authorizationUpdateError) {
+        throw authorizationUpdateError;
+      }
+
       await supabase.from("oauth_states").delete().eq("state", state);
       return res.redirect(
         buildXErrorUrl("already_bound", {
           attempted_wallet: walletAddress,
-          bound_wallet: shortWalletAddress(existingXUser.wallet_address)
+          bound_wallet: shortWalletAddress(boundWalletAddress)
         })
       );
     }
-
-    const tokenExpiresAt = expiresIn
-      ? new Date(Date.now() + Number(expiresIn) * 1000).toISOString()
-      : null;
 
     await saveUserAuthorization({
       walletAddress,
