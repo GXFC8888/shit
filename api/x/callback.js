@@ -35,6 +35,26 @@ function getSiteUrl() {
   return (process.env.SITE_URL || "https://shittoken.us").replace(/\/+$/, "");
 }
 
+function shortWalletAddress(walletAddress) {
+  const value = String(walletAddress || "").trim().toLowerCase();
+
+  return WALLET_ADDRESS_PATTERN.test(value)
+    ? `${value.slice(0, 6)}...${value.slice(-4)}`
+    : "the original wallet";
+}
+
+function buildXErrorUrl(errorCode, details = {}) {
+  const params = new URLSearchParams({ x_error: errorCode });
+
+  Object.entries(details).forEach(([key, value]) => {
+    if (value) {
+      params.set(key, String(value));
+    }
+  });
+
+  return `${getSiteUrl()}/?${params.toString()}#airdrop`;
+}
+
 function buildClaimUrl(walletAddress, xUsername) {
   const siteUrl = getSiteUrl();
   const params = new URLSearchParams();
@@ -388,7 +408,12 @@ export default async function handler(req, res) {
       String(existingXUser.wallet_address).toLowerCase() !== walletAddress
     ) {
       await supabase.from("oauth_states").delete().eq("state", state);
-      return res.redirect(`${siteUrl}/?x_error=already_bound#airdrop`);
+      return res.redirect(
+        buildXErrorUrl("already_bound", {
+          attempted_wallet: walletAddress,
+          bound_wallet: shortWalletAddress(existingXUser.wallet_address)
+        })
+      );
     }
 
     const tokenExpiresAt = expiresIn
@@ -423,6 +448,19 @@ export default async function handler(req, res) {
     return sendConnectedAndOpenXPage(res, walletAddress, xUsername);
   } catch (err) {
     console.error("X callback error:", err);
+
+    const failedState = String(req.query?.state || "").trim();
+
+    if (failedState) {
+      const { error: cleanupError } = await supabase
+        .from("oauth_states")
+        .delete()
+        .eq("state", failedState);
+
+      if (cleanupError) {
+        console.warn("Failed OAuth state cleanup failed:", cleanupError);
+      }
+    }
 
     const siteUrl = getSiteUrl();
 
