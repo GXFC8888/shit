@@ -531,10 +531,20 @@ function getXTargetAppUrl(tweetId = null) {
 }
 
 function getXTargetAndroidIntentUrl(tweetId = null) {
-  const appUrl = getXTargetAppUrl(tweetId).replace(/^twitter:\/\//, "");
+  const latestTask = getLatestTask();
+  const id = String(
+    tweetId ||
+      currentTweetId ||
+      (latestTask ? latestTask.tweet_id : "") ||
+      "",
+  ).trim();
   const fallbackUrl = encodeURIComponent(getXTargetUrl(tweetId));
 
-  return `intent://${appUrl}#Intent;scheme=twitter;package=com.twitter.android;S.browser_fallback_url=${fallbackUrl};end`;
+  const targetPath = id
+    ? `${OFFICIAL_X_USERNAME}/status/${id}`
+    : OFFICIAL_X_USERNAME;
+
+  return `intent://twitter.com/${targetPath}#Intent;scheme=https;package=com.twitter.android;S.browser_fallback_url=${fallbackUrl};end`;
 }
 
 function openOfficialXProfileInApp() {
