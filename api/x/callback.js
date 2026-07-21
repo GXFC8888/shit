@@ -262,8 +262,6 @@ function sendConnectedAndOpenXPage(res, walletAddress, xUsername) {
 
       try {
         if (wallet) {
-          localStorage.setItem("wallet_connected", "true");
-          localStorage.setItem("wallet_address", wallet);
           localStorage.setItem("pending_x_wallet", wallet);
           localStorage.setItem("x_connected_" + String(wallet).toLowerCase(), "true");
           localStorage.setItem("pending_official_x", "true");
